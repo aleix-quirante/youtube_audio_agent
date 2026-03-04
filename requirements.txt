@@ -1,0 +1,23 @@
+#LangChain and agents
+langchain
+langchain-openai
+langchain-pinecone
+langgraph
+
+#Vectorial base
+pinecone-client
+
+#App web
+streamlit
+
+#Youtube procesor
+yt-dlp
+youtube-transcript-api
+
+#Audio and music procesor
+openai-whisper
+librosa
+soundfile
+
+#Utility 
+python-dotenv
