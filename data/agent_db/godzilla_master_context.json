@@ -3,336 +3,392 @@
         "start": 0.0,
         "end": 7.0,
         "is_music_piece": true,
+        "type": "speech_with_music",
         "text": "M&M releases a new cold-bidant directive visual for his monster hit with the late"
     },
     {
         "start": 7.0,
         "end": 8.64,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "juice world Godzilla."
     },
     {
         "start": 8.64,
         "end": 13.28,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "It's full of callbacks, name drops, cameos, and more, so Genius News decided to take"
     },
     {
         "start": 13.28,
         "end": 15.32,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "a look at some of the top references."
     },
     {
         "start": 15.32,
         "end": 27.72,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "M starts the video by downing a bottle of alcohol, kick starting on wild journey."
     },
     {
         "start": 27.72,
         "end": 31.44,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "This could be a reference to Eminem's past drug and alcohol abuse that led him to his"
     },
     {
         "start": 31.44,
         "end": 40.88,
         "is_music_piece": true,
+        "type": "speech_with_music",
         "text": "current sobriety."
     },
     {
         "start": 40.88,
         "end": 45.12,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Next up we see clones of the Detroit rapper similar to his iconic 2000 music video The Real"
     },
     {
         "start": 45.12,
         "end": 48.24,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Slim Shady, where he's surrounded by Eminem doppelgangers."
     },
     {
         "start": 48.24,
         "end": 52.56,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Later, M takes us on a walk where he runs into another familiar face, a look alike in"
     },
     {
         "start": 52.56,
         "end": 56.76,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "a straight jacket, a visual that he's used a number of times, like in my name is, and"
     },
     {
         "start": 56.76,
         "end": 64.32,
         "is_music_piece": true,
+        "type": "speech_with_music",
         "text": "his collab with Rihanna for the monster."
     },
     {
         "start": 64.32,
         "end": 69.04,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Next, a bartender hands in a shot of vodka, another direct reference to his bars on my name"
     },
     {
         "start": 69.04,
         "end": 79.4,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "is."
     },
     {
         "start": 79.4,
         "end": 83.28,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Right after this nod to two of his calling cards, we get the first cameo by Lenny, an"
     },
     {
         "start": 83.28,
         "end": 86.16,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Easter egg director Cole Bennett places in every video."
     },
     {
         "start": 86.16,
         "end": 89.8,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "The character appears on the calendar and is found in the cover of the CD."
     },
     {
         "start": 89.8,
         "end": 93.72,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Cole also finds an opportunity to pay homage to a friend by floating doose worlds to albums"
     },
     {
         "start": 93.72,
         "end": 97.16,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Death Race for Love and good buying good riddance amongst the stack."
     },
     {
         "start": 97.16,
         "end": 101.64,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Later, Eminem sits atop his throne of albums, surrounded by fans, which could be a possible"
     },
     {
         "start": 101.64,
         "end": 104.56,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "callback to his 2005 visual for when I'm gone."
     },
     {
         "start": 104.56,
         "end": 108.84,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "In the crowd, we see a doppelganger wearing a durag in glasses, a retro Eminem look from"
     },
     {
         "start": 108.84,
         "end": 110.08,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "the early 2000s."
     },
     {
         "start": 110.08,
         "end": 114.36,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Later, we find the rapper buttering meat with a chainsaw, and 10 years ago, Emmys to"
     },
     {
         "start": 114.36,
         "end": 116.24,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "often come on stage the same way."
     },
     {
         "start": 116.24,
         "end": 119.96,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Recently, Drake even posted a bit of memorabilia remembering those days."
     },
     {
         "start": 119.96,
         "end": 123.96,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "The video also gives us a visual for Emm's lyrical reference to Diddy's infamous request"
     },
     {
         "start": 123.96,
         "end": 124.96,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "on Making the Band."
     },
     {
         "start": 124.96,
         "end": 147.52,
         "is_music_piece": true,
+        "type": "speech_with_music",
         "text": "We cut to Emm opening up a car trunk with a full moon above."
     },
     {
         "start": 147.52,
         "end": 152.08,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "It's seen in civilian allusion to the artwork of his 1999 classic, The Slim Shady LP, and"
     },
     {
         "start": 152.08,
         "end": 161.92,
         "is_music_piece": true,
+        "type": "speech_with_music",
         "text": "it's seen in the video."
     },
     {
         "start": 161.92,
         "end": 165.96,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Right when Eminem is about to spit the fastest part of his verse, he surprises the knockout"
     },
     {
         "start": 165.96,
         "end": 168.0,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "punch from boxing champion Mike Tyson."
     },
     {
         "start": 168.0,
         "end": 179.8,
         "is_music_piece": true,
+        "type": "speech_with_music",
         "text": "Who you meant to know in his late 90s cut, just don't give a fuck."
     },
     {
         "start": 179.8,
         "end": 191.0,
         "is_music_piece": true,
+        "type": "speech_with_music",
         "text": "To treat Marshall's injuries, Dr. Dre appears as a literal physician along with another"
     },
     {
         "start": 191.0,
         "end": 193.04,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "emclone and a nervous Tyson."
     },
     {
         "start": 193.04,
         "end": 196.72,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "It's a throwback to his mini ER visits like without me where he also got a prescription"
     },
     {
         "start": 196.72,
         "end": 197.72,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "dose of liquor."
     },
     {
         "start": 197.72,
         "end": 201.56,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "I need a doctor where he visits a dying Dre and a phenomenal where he breaks out of"
     },
     {
         "start": 201.56,
         "end": 202.56,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "a hospital."
     },
     {
         "start": 202.56,
         "end": 204.76,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "The music video closes with a tribute to Juice World."
     },
     {
         "start": 204.76,
         "end": 206.76,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "I hope everybody having a good day."
     },
     {
         "start": 206.76,
         "end": 210.36,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Hope everybody accomplish something significant."
     },
     {
         "start": 210.36,
         "end": 213.4,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Even if you didn't accomplish anything significant don't be discouraged."
     },
     {
         "start": 213.4,
         "end": 217.84,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Just aim to accomplish something significant tomorrow and the next day."
     },
     {
         "start": 217.84,
         "end": 218.84,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "And so on."
     },
     {
         "start": 218.84,
         "end": 223.4,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Cole, a frequent collaborator in Friend of Juice World, signs a video off with 9994EVER"
     },
     {
         "start": 223.4,
         "end": 226.52,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "and seems to aim to carry his friend's legacy in his future works."
     },
     {
         "start": 226.52,
         "end": 232.68,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Forcedly over the past few years we've lost a lot of legends and whenever they die we"
     },
     {
         "start": 232.68,
         "end": 236.68,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "always say damn I wish I could appreciate that person all there is here."
     },
     {
         "start": 236.68,
         "end": 239.6,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Juice was definitely appreciated while he was here."
     },
     {
         "start": 239.6,
         "end": 243.88,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "With all the Easter eggs, throwback Eminem gyms and touching tributes to juice, the music"
     },
     {
         "start": 243.88,
         "end": 248.64,
         "is_music_piece": true,
+        "type": "speech_with_music",
         "text": "video is a hit with fans gaining over 10 million views in just 24 hours."
     },
     {
         "start": 248.64,
         "end": 249.64,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "What do we miss?"
     },
     {
         "start": 249.64,
         "end": 250.64,
         "is_music_piece": false,
+        "type": "speech_only",
         "text": "Let us know in the comments."
     },
     {
         "start": 250.64,
         "end": 257.96,
         "is_music_piece": true,
+        "type": "speech_with_music",
         "text": "I'm Delisa, Virginia's News, bringing you the meaning and the knowledge behind the music."
     }
 ]

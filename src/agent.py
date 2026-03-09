@@ -64,7 +64,8 @@ def create_musical_agent(video_title: str):
     print(f"🤖 Initializing 'Music Sensei' for video: {video_title}")
 
     llm = ChatGoogleGenerativeAI(
-        model="gemini-1.5-flash", google_api_key=os.getenv("GEMINI_API_KEY")
+        model="gemini-2.5-flash",
+        google_api_key=os.getenv("GEMINI_API_KEY"),
     )
 
     tools = [search_video_knowledge, music_expert_search, get_audio_stats]
@@ -76,4 +77,4 @@ def create_musical_agent(video_title: str):
         "Always provide timestamps when citing information from the internal transcript."
     )
 
-    return create_react_agent(llm, tools, state_modifier=system_message)
+    return create_react_agent(llm, tools, prompt=system_message)
