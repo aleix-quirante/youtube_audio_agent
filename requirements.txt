@@ -3,9 +3,11 @@ langchain
 langchain-openai
 langchain-pinecone
 langgraph
+langchain-google-genai
+langchain-community
 
 #Vectorial base
-pinecone-client
+pinecone
 
 #App web
 streamlit
@@ -21,3 +23,4 @@ soundfile
 
 #Utility 
 python-dotenv
+avily-python
