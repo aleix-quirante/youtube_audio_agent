@@ -30,6 +30,7 @@ def download_audio(video_url: str):
         ],
         "outtmpl": "data/raw_audio/%(title)s.%(ext)s",
         "quiet": True,
+        "cookiesfrombrowser": ("chrome",),
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
