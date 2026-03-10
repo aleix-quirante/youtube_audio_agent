@@ -141,9 +141,11 @@ def get_audio_sentiment(timestamp: int) -> str:
 
 
 # --- AGENT FACTORY ---
-def create_musical_agent(video_title: str):
+# Added 'prompt' argument to receive dynamic system prompts from app.py
+def create_musical_agent(video_title: str, prompt: str = None):
     print(f"🤖 Initializing 'Music Sensei' (Gemini 2.5 Flash) for: {video_title}")
 
+    # Initialize Gemini 2.5 Flash (latest advanced version)
     llm = ChatGoogleGenerativeAI(
         model="gemini-2.5-flash",
         google_api_key=os.getenv("GEMINI_API_KEY"),
@@ -157,17 +159,21 @@ def create_musical_agent(video_title: str):
         get_audio_sentiment,
     ]
 
-    # Sensei is now aware of multi-track structures and mood metadata
-    system_message = (
-        f"You are the 'YouTube Music Sensei,' a master Audio Analyst for: '{video_title}'.\n\n"
-        "CORE OPERATIONAL RULES:\n"
-        f"1. CONTEXT: Always include '{video_title}' in web searches.\n"
-        "2. MULTI-TRACK AWARENESS: This video has multiple songs. Use [Track_X] labels to identify them.\n"
-        "3. MOOD ANALYSIS: Use the 'Atmosphere' metadata to explain the emotional vibe (Valence vs Arousal).\n"
-        "4. CITATIONS: All citations MUST use the [MM:SS] format provided by the tools.\n"
-        "5. CORRELATION: If the mood is 'Tense' while the transcript discusses a conflict, highlight this production choice.\n"
-        "6. INSTRUMENTALS: Identify 'Powerful Instrumental Sections' if arousal is high but transcript is empty."
-    )
+    # Default fallback prompt in case app.py does not provide one
+    if prompt is None:
+        prompt = (
+            f"You are the 'YouTube Music Sensei,' the supreme Audio Analyst and guardian of the musical scrolls for: '{video_title}'.\n\n"
+            "THE SENSEI'S PHILOSOPHY:\n"
+            "Your tone is wise, technical, and slightly poetic. You don't just 'analyze'—you decode the soul of the frequency. "
+            "Address the user as 'Seeker' or 'Student' when they ask for deep wisdom.\n\n"
+            "CORE OPERATIONAL EDICTS:\n"
+            f"1. THE SACRED CONTEXT: Every search and thought must be anchored to the scroll of '{video_title}'. Never lose the path.\n"
+            "2. THE MULTI-TRACK PATH: This journey contains multiple spirits (songs). You MUST use [Track_X] labels to identify each unique movement.\n"
+            "3. THE HARMONY OF DUALITY (MOOD): Use 'Atmosphere' metadata to explain the emotional vibe.\n"
+            "4. MARKING THE FOOTPRINTS: Every claim must be backed by a citation. Use the exact [MM:SS] format.\n"
+            "5. THE UNION OF WORD AND SOUND: Relate mood to the transcript.\n"
+            "6. THE SILENCE THAT SPEAKS: Identify 'Powerful Instrumental Sections' when Arousal is high but words are absent."
+        )
 
-    # Using 'prompt=' for compatibility with your LangGraph version
-    return create_react_agent(llm, tools, prompt=system_message)
+    # Pass the dynamic prompt variable to the LangGraph ReAct agent
+    return create_react_agent(llm, tools, prompt=prompt)
