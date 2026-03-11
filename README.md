@@ -1,5 +1,7 @@
 # 🏮 YouTube Music Sensei 
 
+![alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/ia_dev/Desktop/youtube_audio_agent/assets/summary%20sensei%20chatbot.jpg?version%3D1773220847616)
+
 > An advanced Multimodal RAG Agent that decodes the "musical DNA" of YouTube videos using audio source separation, signal processing, and LLM reasoning.
 
 ![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
@@ -31,5 +33,5 @@ Analyzing music documentary videos (like Genius News) is incredibly difficult fo
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/yourusername/youtube-music-sensei.git](https://github.com/yourusername/youtube-music-sensei.git)
+   git clone [https://github.com/aleix-quirante/youtube_audio_agent](https://github.com/aleix-quirante/youtube_audio_agent)
    cd youtube-music-sensei
