@@ -103,10 +103,10 @@ with tab_chat:
 
 
 # ==========================================
-# TAB 2: ADD NEW VIDEO (THE HOLY GRAIL)
+# TAB 2: ADD NEW VIDEO
 # ==========================================
 with tab_new_video:
-    st.header("📥 The Archive")
+    st.header("📥 The Archive (Beta)")
     st.markdown(
         "Paste a YouTube URL. The Sensei will download, separate, transcribe, and index the audio automatically."
     )
@@ -117,28 +117,12 @@ with tab_new_video:
 
     if st.button("🚀 Begin Deep Analysis", type="primary"):
         if url:
-            with st.status(
-                "Deconstructing the Artifact... (This will take several minutes)",
-                expanded=True,
-            ) as status:
-                st.write("Initiating Deep Neural Processing...")
-
-                # Calling the orchestrator (Holy Grail Pipeline)
-                success, result_message = run_holy_grail_pipeline(url)
-
-                if success:
-                    status.update(
-                        label="✅ Integration Complete!",
-                        state="complete",
-                        expanded=False,
-                    )
-                    st.success(
-                        f"Successfully digested: '{result_message}'. You may now consult the Sensei in The Dojo."
-                    )
-                else:
-                    status.update(
-                        label="❌ Analysis Failed", state="error", expanded=True
-                    )
-                    st.error(f"Error details: {result_message}")
+            # Elegant Work in Progress message instead of running the broken pipeline
+            st.info(
+                "🚧 **Feature in Development (v2.0)**\n\n"
+                "YouTube recently updated its bot-protection matrix. "
+                "The Sensei's extraction protocols are currently being upgraded to bypass these new security measures. "
+                "For this presentation, the Dojo is running on our pre-indexed, high-fidelity Master JSONs."
+            )
         else:
             st.warning("Seeker, you must provide a valid scroll (URL).")
