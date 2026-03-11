@@ -31,8 +31,8 @@ Analyzing music documentary videos (like Genius News) is incredibly difficult fo
 
 ## ⚙️ Installation & Setup
 
-1. Clone the repository:
 ```bash
+1. Clone the repository:
 git clone [https://github.com/aleix-quirante/youtube_audio_agent.git](https://github.com/aleix-quirante/youtube_audio_agent.git)
 cd youtube_audio_agent
 
