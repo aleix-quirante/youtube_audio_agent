@@ -36,16 +36,16 @@ Analyzing music documentary videos (like Genius News) is incredibly difficult fo
 git clone [https://github.com/aleix-quirante/youtube_audio_agent.git](https://github.com/aleix-quirante/youtube_audio_agent.git)
 cd youtube_audio_agent
 
-**2. Install dependencies:**
+***2. Install dependencies:***
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
-**3. Set environment variables:**
+***3. Set environment variables:***
 GEMINI_API_KEY="your_google_key_here"
 PINECONE_API_KEY="your_pinecone_key_here"
 TAVILY_API_KEY="your_tavily_key_here"
 
-**4. Run the application:**
+***4. Run the application:***
 make run 
 # or run: streamlit run app.py
