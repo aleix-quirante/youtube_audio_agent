@@ -1,6 +1,6 @@
 # 🏮 YouTube Music Sensei 
 
-![alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/ia_dev/Desktop/youtube_audio_agent/assets/summary%20sensei%20chatbot.jpg?version%3D1773220847616)
+![YouTube Music Sensei](assets/summary%20sensei%20chatbot.jpg)
 
 > An advanced Multimodal RAG Agent that decodes the "musical DNA" of YouTube videos using audio source separation, signal processing, and LLM reasoning.
 
