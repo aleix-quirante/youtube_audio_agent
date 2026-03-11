@@ -2,39 +2,14 @@ import streamlit as st
 import os
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
-import numpy as np
-import librosa
 
 # Internal imports
+import src.config  # This triggers the critical env vars validation check
 from src.pipeline import run_holy_grail_pipeline
 from src.agent import create_musical_agent
+from src.prompts import get_sensei_prompt
 
 load_dotenv()
-
-
-# --- SENSEI SYSTEM PROMPT (Dynamic Personality) ---
-def get_sensei_prompt(video_title, arrogant_mode=False):
-    if not arrogant_mode:
-        # Normal "Sensei Mode"
-        return (
-            f"You are the 'YouTube Music Sensei' for: '{video_title}'.\n"
-            "TONE: Wise, technical, and slightly poetic. Address the user as 'Seeker'.\n"
-            "RULES: Use [MM:SS], identify tracks as [Track_X], explain Valence vs Arousal."
-        )
-    else:
-        # "Godzilla Mode" (Arrogante)
-        return (
-            f"You are the 'Insufferable Music Genius' for: '{video_title}'.\n\n"
-            "PERSONALITY: You are a condescending, brilliant, and arrogant know-it-all. "
-            "You find the user's questions basic and boring. You have a superior musical ear. "
-            "Address the user as 'Amateur', 'Novice', or 'Organic Brain'.\n\n"
-            "RULES:\n"
-            "1. Answer with extreme technicality to show off.\n"
-            "2. Insult the user's lack of musical knowledge before answering.\n"
-            "3. Use sophisticated vocabulary (e.g., 'Your simplistic inquiry', 'My vast processing power').\n"
-            "4. Still follow the technical rules: [MM:SS] and [Track_X], but act like it's a waste of your time."
-        )
-
 
 # --- 1. PAGE CONFIG ---
 st.set_page_config(page_title="Music Sensei AI", page_icon="🏮", layout="wide")
@@ -69,13 +44,17 @@ with tab_chat:
             with st.status(
                 "The Sensei is shifting his consciousness...", expanded=False
             ):
-                prompt = get_sensei_prompt(video_title, arrogant_mode=arrogant_mode)
-                st.session_state.agent = create_musical_agent(
-                    video_title, prompt=prompt
-                )
-                st.session_state.current_video = video_title
-                st.session_state.current_mode = arrogant_mode
-                st.success("Sensei has arrived.")
+                try:
+                    prompt = get_sensei_prompt(video_title, arrogant_mode=arrogant_mode)
+                    st.session_state.agent = create_musical_agent(
+                        video_title, prompt=prompt
+                    )
+                    st.session_state.current_video = video_title
+                    st.session_state.current_mode = arrogant_mode
+                    st.success("Sensei has arrived.")
+                except Exception as e:
+                    st.error(f"Error initializing Sensei: {str(e)}")
+                    st.stop()
 
     # Chat History logic
     if "messages" not in st.session_state:
@@ -92,14 +71,17 @@ with tab_chat:
 
         with st.chat_message("assistant"):
             with st.spinner("Consulting the frequencies..."):
-                response = st.session_state.agent.invoke(
-                    {"messages": [HumanMessage(content=prompt_input)]}
-                )
-                answer = response["messages"][-1].content
-                st.markdown(answer)
-                st.session_state.messages.append(
-                    {"role": "assistant", "content": answer}
-                )
+                try:
+                    response = st.session_state.agent.invoke(
+                        {"messages": [HumanMessage(content=prompt_input)]}
+                    )
+                    answer = response["messages"][-1].content
+                    st.markdown(answer)
+                    st.session_state.messages.append(
+                        {"role": "assistant", "content": answer}
+                    )
+                except Exception as e:
+                    st.error(f"The Sensei's connection was disrupted: {str(e)}")
 
 
 # ==========================================
