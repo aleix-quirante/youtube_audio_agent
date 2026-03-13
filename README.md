@@ -17,6 +17,7 @@ Analyzing music documentary videos (like Genius News) is incredibly difficult fo
 ## 🚀 Key Features
 
 * **🎧 Audio Source Separation:** Uses AI models to deconstruct mixed audio signals.
+* **📝 Semantic Lyrics Analysis:** Uses Gemini 2.5 Flash to deeply analyze the transcribed background lyrics of songs (theme, sentiment, and poetic structure), allowing the agent to explain *what* the song means.
 * **🧠 ReAct Reasoning Agent:** Powered by **LangGraph** and **Gemini 2.5 Flash**, the agent doesn't just answer questions; it reasons, thinks, and decides which tools to use.
 * **💾 Vector Knowledge (RAG):** Built on **Pinecone** to instantly retrieve exact timestamps, lyrics, and metadata from the video's DNA.
 * **🌍 Real-Time Web Search:** Integrated with **Tavily API** to fetch external music history, artist facts, and records on the fly.

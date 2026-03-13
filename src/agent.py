@@ -114,6 +114,8 @@ def search_video_knowledge(query: str, music_only: bool = False) -> str:
             timestamp = format_timestamp(m.get("start", 0))
 
             icon = "🎵 [MUSIC]" if m.get("is_music_piece") else "🗣️ [NARRATIVE]"
+            if m.get("is_lyrics_analysis"):
+                icon = "📝 [LYRICS ANALYSIS]"
 
             context += f"--- Result {i+1} [{track_id}] ---\n"
             context += f"Time: {timestamp} | Atmosphere: {mood} | Type: {icon}\n"
