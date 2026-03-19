@@ -89,16 +89,49 @@ def run_demucs(audio_path: str, title: str):
 
 
 # --- 3. AUDIO ANALYSIS & JSON CREATION ---
+def analyze_enhanced_sentiment(y, sr):
+    """Calculates if the music is happy/sad (Valence) and fast/intense (Arousal)"""
+    # 1. Harmony (Major = Happy, Minor = Sad)
+    chroma = librosa.feature.chroma_cqt(y=y, sr=sr)
+    mean_chroma = np.mean(chroma, axis=1)
+    tonic_idx = np.argmax(mean_chroma)
+    major_3rd, minor_3rd = (tonic_idx + 4) % 12, (tonic_idx + 3) % 12
+    sentiment_tag = (
+        "Major" if mean_chroma[major_3rd] > mean_chroma[minor_3rd] else "Minor"
+    )
+
+    # 2. Energy & Rhythm
+    rms = librosa.feature.rms(y=y)
+    energy = np.mean(rms)
+    tempo, _ = librosa.beat.beat_track(y=y, sr=sr)
+    tempo = float(tempo)
+
+    # 3. Mood Label Logic
+    if sentiment_tag == "Major":
+        mood = "Euphoric / Happy" if tempo > 120 else "Peaceful / Calm"
+    else:
+        mood = "Tense / Aggressive" if tempo > 120 else "Sad / Depressing"
+
+    return {
+        "mood": mood,
+        "tempo": tempo,
+        "key_mode": sentiment_tag,
+        "energy": float(energy),
+    }
+
+
 def process_audio_to_json(audio_path: str, drums_path: str, title: str):
     print("🧠 Transcribing with Whisper and analyzing sustained drum power...")
 
     try:
-        # Whisper Transcription
+        # 1. WHISPER: Listen to the words
         model = whisper.load_model("base")
         result = model.transcribe(audio_path, fp16=False)
 
-        # Librosa RMS Analysis
+        # 2. LIBROSA: Listen to the drums (The 'Skeleton')
         y_drums, sr = librosa.load(drums_path)
+
+        # 3. SUSTAINED POWER LOGIC: Finding real music blocks
         rms_drums = librosa.feature.rms(y=y_drums, hop_length=HOP_LENGTH)[0]
         times_rms = librosa.frames_to_time(
             range(len(rms_drums)), sr=sr, hop_length=HOP_LENGTH
@@ -127,32 +160,58 @@ def process_audio_to_json(audio_path: str, drums_path: str, title: str):
                     )
                 count = 0
 
-        # Cross-reference Whisper and Music Blocks
+        # 4. MULTI-SONG DETECTION: Identifying different tracks
+        current_song_id = 1
+        enriched_blocks = []
+        for i, block in enumerate(validated_music_blocks):
+            start_samp, end_samp = int(block["start"] * sr), int(block["end"] * sr)
+            y_segment = y_drums[start_samp:end_samp]
+
+            metrics = analyze_enhanced_sentiment(y_segment, sr)
+
+            # If BPM jumps or Key changes, it's a NEW SONG
+            if i > 0:
+                bpm_diff = abs(metrics["tempo"] - enriched_blocks[-1]["tempo"])
+                if (
+                    bpm_diff > 15
+                    or metrics["key_mode"] != enriched_blocks[-1]["key_mode"]
+                ):
+                    current_song_id += 1
+
+            block.update(metrics)
+            block["song_id"] = f"Track_{current_song_id}"
+            enriched_blocks.append(block)
+
+        # 5. FINAL MAPPING: Labeling each piece of information
         agent_database = []
         for segment in result["segments"]:
-            s_start = float(segment["start"])
-            s_end = float(segment["end"])
-            text = str(segment["text"]).strip()
+            s_start, s_end = float(segment["start"]), float(segment["end"])
+            track_tag, current_mood = "No_Music", "Neutral"
+            is_music = False
 
-            is_music_piece = False
-            for block in validated_music_blocks:
+            for block in enriched_blocks:
                 overlap = min(s_end, block["end"]) - max(s_start, block["start"])
                 if overlap > 0.5:
-                    is_music_piece = True
+                    is_music, track_tag, current_mood = (
+                        True,
+                        block["song_id"],
+                        block["mood"],
+                    )
                     break
 
-            if text:  # Only save if there's actual text
+            if str(segment["text"]).strip():  # Only save if there's actual text
                 agent_database.append(
                     {
                         "start": round(s_start, 2),
                         "end": round(s_end, 2),
-                        "is_music_piece": is_music_piece,
-                        "text": text,
-                        "song_id": title,  # Tagging the specific video
+                        "is_music_piece": is_music,
+                        "song_id": track_tag,
+                        "mood": current_mood,
+                        "text": str(segment["text"]).strip(),
                     }
                 )
 
-        # Save JSON
+        # 6. STORAGE: Saving the Master JSON
         json_path = AGENT_DB_DIR / f"{title.replace(' ', '_')}_master.json"
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump(agent_database, f, indent=4, ensure_ascii=False)
@@ -206,6 +265,11 @@ def run_holy_grail_pipeline(youtube_url: str):
         audio_path, title = download_audio(youtube_url)
         drums_path = run_demucs(audio_path, title)
         json_path = process_audio_to_json(audio_path, drums_path, title)
+
+        from src.lyrics_analyzer import process_master_json_for_lyrics
+
+        process_master_json_for_lyrics(title)
+
         ingest_to_pinecone(json_path)
 
         return True, title
